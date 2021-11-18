@@ -35,3 +35,20 @@ Footer {
   background-color: #212529;
   height: 20vh;
 }
+.color {
+  background-color: #212529;
+  text-align: center;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #212529;
+  border-radius: 1vh;
+}
+.carousel-control-prev-icon {
+  position: relative;
+  right: 90%;
+}
+.carousel-control-next-icon {
+  position: relative;
+  left: 90%;
+}
