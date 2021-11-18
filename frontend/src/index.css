@@ -3,12 +3,13 @@ html * {
   padding: 0;
   box-sizing: border-box;
 }
+
 .img {
   background-image: url("../src/assets/pexels-pixabay-279574.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 75vh;
+  height: 130vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,4 +21,17 @@ html * {
   padding: 1vh;
   border-radius: 1vh;
 }
-
+.popularTineraries {
+  text-align: center;
+  padding: 4vh;
+  background-color: #212529;
+  color: aliceblue;
+}
+.carousel {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+Footer {
+  background-color: #212529;
+  height: 20vh;
+}
