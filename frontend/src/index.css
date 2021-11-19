@@ -3,6 +3,11 @@ html * {
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  position: relative;
+  padding-bottom: 27vh;
+  min-height: 100vh;
+}
 
 .img {
   background-image: url("../src/assets/pexels-pixabay-279574.jpg");
@@ -14,6 +19,18 @@ html * {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 3vh;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.49);
+  color: #f0f8ff;
+}
+button {
+  width: 25vh;
+  font-size: 2vh !important;
+  font-weight: 600 !important;
+  border-width: 3px !important;
+  box-shadow: 8px 9px 9px 0px rgba(0, 111, 176, 0.75);
+  -webkit-box-shadow: 8px 9px 9px 0px rgba(0, 111, 176, 0.75);
+  -moz-box-shadow: 8px 9px 9px 0px rgba(0, 111, 176, 0.75);
 }
 .welcome {
   backdrop-filter: blur(10px);
@@ -31,14 +48,59 @@ html * {
   margin-left: 20%;
   margin-right: 20%;
 }
-Footer {
+.card-body {
   background-color: #212529;
-  height: 20vh;
+  color: aliceblue;
+  text-align: center;
+  z-index: 10;
 }
-.color {
+
+img:hover {
+  filter: saturate(0%);
+  -webkit-filter: saturate(0%);
+  -moz-filter: saturate(0%);
+}
+.navFooter:hover {
+  font-size: 20px;
+  text-shadow: 3px 3px 3px rgb(255, 255, 255);
+}
+.icons > h3:hover {
+  font-size: 30px;
+  text-shadow: 3px 3px 3px rgb(255, 255, 255);
+}
+footer {
+  background-color: #212529;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.nav {
+  flex-direction: column;
+}
+.nav-link {
+  color: aliceblue !important;
+  font-size: 2vh;
+}
+footer .color {
   background-color: #212529;
   text-align: center;
 }
+footer div {
+  text-align: center;
+  color: aliceblue;
+}
+.icons {
+  display: flex;
+  flex-direction: column;
+}
+footer h3 {
+  color: aliceblue;
+}
+/* Estilos del Carrucel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-color: #212529;
@@ -51,4 +113,32 @@ Footer {
 .carousel-control-next-icon {
   position: relative;
   left: 90%;
+}
+.carousel-indicators {
+  display: none !important;
+}
+
+/* @medias */
+@media (max-width: 768px) {
+  Footer {
+    flex-direction: column;
+    height: 55vh;
+  }
+  body {
+    padding-bottom: 55vh;
+  }
+
+  .carousel {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media (max-width: 425px) {
+  body {
+    padding-bottom: 60vh;
+  }
+  Footer {
+    height: 60vh;
+  }
 }
