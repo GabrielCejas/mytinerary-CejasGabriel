@@ -23,7 +23,7 @@ body {
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.49);
   color: #f0f8ff;
 }
-button {
+.img button {
   width: 25vh;
   font-size: 2vh !important;
   font-weight: 600 !important;

@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
-import CarouselB from "../components/CarouselB";
+import CarouselCards from "../components/CarouselCards";
 import Footer from "../components/Footer";
 
 class Home extends Component {
@@ -14,7 +14,7 @@ class Home extends Component {
         <div className="popularTineraries">
           <h3>Popular MyTineraries</h3>
         </div>
-        <CarouselB />
+        <CarouselCards />
         <Footer />
       </>
     );
