@@ -1,5 +1,4 @@
 import React from "react";
-import { Carousel } from "react-bootstrap/";
 import CardCarousel from "./CardCarousel";
 
 function CarouselCards() {
@@ -25,7 +24,7 @@ function CarouselCards() {
   ];
 
   return (
-      <CardCarousel arrayCountries={arrayCountries} />
+    <CardCarousel arrayCountries={arrayCountries} />
   );
 }
 export default CarouselCards;
