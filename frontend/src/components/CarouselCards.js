@@ -24,7 +24,7 @@ function CarouselCards() {
   ];
 
   return (
-    <CardCarousel arrayCountries={arrayCountries} />
+    <CardCarousel arrayCountries={arrayCountries}  />
   );
 }
 export default CarouselCards;
