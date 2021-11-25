@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap/";
 import { Carousel } from "react-bootstrap/";
 
+
 function CardCarousel(props) {
   const { arrayCountries } = props;
   return (

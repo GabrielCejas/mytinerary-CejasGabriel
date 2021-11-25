@@ -143,6 +143,19 @@ footer h3 {
     margin-right: 10%;
   }
 }
+.pageCity {
+  background-image: url("./assets/map.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 60vh;
+  margin-bottom: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pageCity h1 {
+  font-size: 5vh;
+}
 
 @media (max-width: 425px) {
   body {
