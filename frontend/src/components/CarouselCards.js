@@ -13,7 +13,7 @@ function CarouselCards() {
       { name: "Lisbon", country: "Portugal", photo: "lisboa.jpg" },
       { name: "Tokyo", country: "Japan", photo: "tokio.jpg" },
       { name: "Vienna", country: "Austria", photo: "viena.jpg" },
-      { name: "Washinton", country: "EEUU", photo: "washinton.jpg" },
+      { name: "Washington", country: "EEUU", photo: "washinton.jpg" },
     ],
     [
       { name: "Nueva York", country: "EEUU", photo: "nuevaYork.jpg" },

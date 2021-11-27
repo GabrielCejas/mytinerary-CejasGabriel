@@ -2,19 +2,18 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap/";
 import { Carousel } from "react-bootstrap/";
 
-
 function CardCarousel(props) {
   const { arrayCountries } = props;
   return (
     <Carousel className="my-5 Carousel" fade>
-      {arrayCountries.map((city) => {
+      {arrayCountries.map((city, id) => {
         return (
-          <Carousel.Item>
+          <Carousel.Item key={id}>
             <Row xs={1} md={2} className="g-4">
               {city.map((array) => {
                 let photos = require(`../assets/${array.photo}`).default;
                 return (
-                  <Col className="col">
+                  <Col className="col" key={array.name}>
                     <Card className="bg-purple-600 text-white">
                       <Card.Img
                         variant="top"
