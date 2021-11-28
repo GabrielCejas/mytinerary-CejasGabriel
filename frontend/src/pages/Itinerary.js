@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Card, Container } from "react-bootstrap/";
+import { Link, useParams } from "react-router-dom";
+import { Card, Container, Button } from "react-bootstrap/";
 import axios from "axios";
+
 
 function Itinerary() {
   const [itinerary, setItinerary] = useState();
@@ -29,6 +30,7 @@ function Itinerary() {
               <Card.Text>{itinerary.description}</Card.Text>
             </Card.Body>
           </Card>
+          <Button eventKey={2} as={Link} to="/Cities">Back to Cities</Button>
         </Container>
       )}
     </>

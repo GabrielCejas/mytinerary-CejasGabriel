@@ -4,7 +4,8 @@ const City = require("../models/City");
 const citiesControllers = {
   getCities: (req, res) => {
     City.find()
-    .then((response) => res.json({ response }));
+    .then((response) => res.json({ response }))
+    .catch((err) => console.log(err));
   },
   loadcities: (req, res) => {
     const { name, country, description, photo } = req.body;
@@ -18,7 +19,25 @@ const citiesControllers = {
       .then((response) => res.json({ response }))
       .catch((err) => console.log(err));
   },
-  deletecity: (req, res) => {},
+  deleteCity: async(req, res) => {
+    let city
+    const id = req.params.id
+    try{
+      city = await City.findOneAndDelete({_id:id})
+    }catch(error){
+      console.log(error)
+    }
+    res.json({response:city, success:true})
+  },
+  changeCity: async(req, res) => {
+    let id = req.params.id
+    let city = req.body
+    try{
+      await City.findOneAndUpdate({_id:id}, {...city})
+    }catch(error){
+      console.log(error)
+    }
+  },
 };
 
 module.exports = citiesControllers;

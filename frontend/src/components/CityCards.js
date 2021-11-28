@@ -1,37 +1,64 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
-import { Card, Container } from "react-bootstrap/";
+import { Card, Container, Form, Alert } from "react-bootstrap/";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 function CityCards() {
   const [cities, setCities] = useState([]);
+  const [filter, setFilter] = useState("");
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/cities")
       .then((res) => setCities(res.data.response));
   }, []);
 
+ const city = cities.filter((city) => {
+    console.log(filter.name)
+    console.log(city.name.trim())
+    if (filter === "") {
+      return city;
+    } else if (city.name.toString().toLowerCase().startsWith(filter.name.toString().toLowerCase().trim())) {
+      return city;
+    }
+  })
+
   return (
     <>
       <div className="pageCity">
         <h1>Cities</h1>
       </div>
-      {cities.map((city) => {
-        let photos = require(`../assets/${city.photo}`).default;
-        return (
-          <Container key={city.id}>
-            <Card>
-              <Card.Img variant="top" src={photos} />
-              <Card.Body>
-                <Card.Title>{city.name}</Card.Title>
-                <Card.Title>{city.country}</Card.Title>
-                <Card.Text>{city.description}</Card.Text>
-                <Link to={`/Cities/${city._id}`}>Information </Link>
-              </Card.Body>
-            </Card>
-          </Container>
-        );
-      })}
+      <Form className="col-xl-6">
+        <Form.Group className="mb-3">
+          <Form.Label>Search for a city</Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            onChange={(e) => {
+              setFilter({ name: e.target.value });
+            }}
+            placeholder="Enter a city"
+          />
+        </Form.Group>
+      </Form>
+      {(city.length > 0) ? city.map((City) => {
+          let photos = require(`../assets/${City.photo}`).default;
+          return (
+            <Container key={City.id}>
+              <Card>
+                <Card.Img variant="top" src={photos} />
+                <Card.Body>
+                  <Card.Title>{City.name}</Card.Title>
+                  <Card.Title>{City.country}</Card.Title>
+                  <Card.Text className="mb-4">{City.description}</Card.Text>
+                  <Link className="buttonCities" to={`/Cities/${City._id}`}>
+                    Information
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Container>
+          );
+        }): <Alert className="col-xl-6" variant= 'warning'>The city was not found</Alert>}
     </>
   );
 }
