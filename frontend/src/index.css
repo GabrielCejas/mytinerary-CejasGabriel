@@ -182,7 +182,7 @@ footer h3 {
   background-position: top;
   margin-left: auto;
   margin-right: auto;
-  height: 60vh;
+  height: 80vh;
   margin-bottom: 1vh;
   display: flex;
   justify-content: center;
@@ -196,7 +196,7 @@ footer h3 {
   -webkit-text-stroke: 2px rgb(0, 0, 0);
 }
 
-@media (max-width: 425px) {
+@media (max-width: 500px) {
   body {
     padding-bottom: 60vh;
   }
@@ -205,6 +205,12 @@ footer h3 {
   }
   .img h3 {
     text-align: center;
+  }
+  .imgItynerari {
+    background-image: url("./assets/itinerarioMobil.jpg");
+  }
+  .pageCity {
+    background-image: url("./assets/mapMovil.jpg");
   }
 }
 @media (max-width: 375px) {

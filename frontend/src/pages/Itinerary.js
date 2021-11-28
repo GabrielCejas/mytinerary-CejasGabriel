@@ -30,7 +30,7 @@ function Itinerary() {
               <Card.Text>{itinerary.description}</Card.Text>
             </Card.Body>
           </Card>
-          <Button eventkey={2} as={Link} to="/Cities">
+          <Button className="my-3 text-light bg-dark" eventkey={2} as={Link} to="/Cities">
             Back to Cities
           </Button>
         </Container>
