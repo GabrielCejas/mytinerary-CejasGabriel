@@ -14,8 +14,6 @@ function CityCards() {
   }, []);
 
  const city = cities.filter((city) => {
-    console.log(filter.name)
-    console.log(city.name.trim())
     if (filter === "") {
       return city;
     } else if (city.name.toString().toLowerCase().startsWith(filter.name.toString().toLowerCase().trim())) {

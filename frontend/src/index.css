@@ -71,7 +71,7 @@ img:hover {
   -moz-filter: saturate(0%);
 }
 .navFooter:hover {
-  font-size: 20px;
+  font-size: 18px;
   text-shadow: 3px 3px 3px rgb(255, 255, 255);
 }
 .icons > h3:hover {
@@ -160,15 +160,40 @@ footer h3 {
 .pageCity {
   background-image: url("./assets/map.jpg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
+  margin-left: auto;
+  margin-right: auto;
   height: 60vh;
   margin-bottom: 1vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.pageCity h1 {
-  font-size: 5vh;
+.pageCity > h1 {
+  font-size: 7vh;
+  font-weight: 600;
+  color: #f0f8ff;
+  text-shadow: 2px 2px 2px rgb(253, 253, 253);
+  -webkit-text-stroke: 2px black;
+}
+.imgItynerari {
+  background-image: url("./assets/itinerario.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60vh;
+  margin-bottom: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgItynerari {
+  font-size: 4vh;
+  font-weight: 700;
+  color: #f0f8ff;
+  text-shadow: 2px 2px 2px rgb(253, 253, 253);
+  -webkit-text-stroke: 2px rgb(0, 0, 0);
 }
 
 @media (max-width: 425px) {
