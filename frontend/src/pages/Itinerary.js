@@ -1,0 +1,38 @@
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Card, Container } from "react-bootstrap/";
+import axios from "axios";
+
+function Itinerary() {
+  const [itinerary, setItinerary] = useState();
+
+  const { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/cities/" + id)
+      .then((res) => setItinerary(res.data.response));
+    
+  }, );
+
+  return (
+    <>
+      <h2 className="img mb-4">Under construction</h2>
+      {itinerary && (
+        <Container key={itinerary.id}>
+          <Card>
+            <Card.Img variant="top" src={require(`../assets/${itinerary.photo}`).default} />
+            <Card.Body>
+              <Card.Title>{itinerary.name}</Card.Title>
+              <Card.Title>{itinerary.country}</Card.Title>
+              <Card.Text>{itinerary.description}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Container>
+      )}
+    </>
+  );
+}
+
+export default Itinerary;

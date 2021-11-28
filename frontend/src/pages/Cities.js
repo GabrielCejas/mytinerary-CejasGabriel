@@ -1,12 +1,12 @@
 import React from "react";
 import { Component } from "react";
-import City from "../components/City";
+import CityCards from "../components/CityCards";
 
 class Home extends Component {
   render() {
     return (
       <>
-        <City />
+        <CityCards />
       </>
     );
   }

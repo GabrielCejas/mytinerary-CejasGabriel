@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Card, Container } from "react-bootstrap/";
 import axios from "axios";
-import Button from "@restart/ui/esm/Button";
 import { Link } from "react-router-dom";
 
-function City() {
+function CityCards() {
   const [cities, setCities] = useState([]);
   useEffect(() => {
     axios
@@ -17,19 +16,17 @@ function City() {
       <div className="pageCity">
         <h1>Cities</h1>
       </div>
-      {cities.map((city, id) => {
+      {cities.map((city) => {
         let photos = require(`../assets/${city.photo}`).default;
         return (
-          <Container key={id}>
+          <Container key={city.id}>
             <Card>
               <Card.Img variant="top" src={photos} />
               <Card.Body>
                 <Card.Title>{city.name}</Card.Title>
                 <Card.Title>{city.country}</Card.Title>
                 <Card.Text>{city.description}</Card.Text>
-                <Link to={`/Info/${id}`}>
-                  <Button >Information</Button>
-                </Link>
+                <Link to={`/Cities/${city._id}`}>Information </Link>
               </Card.Body>
             </Card>
           </Container>
@@ -39,4 +36,4 @@ function City() {
   );
 }
 
-export default City;
+export default CityCards;
