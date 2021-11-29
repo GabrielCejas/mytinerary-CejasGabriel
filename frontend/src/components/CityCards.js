@@ -23,7 +23,6 @@ function CityCards() {
       return city;
     }
   });
-  console.log(filter.name);
   return (
     <>
       <div className="pageCity">
@@ -46,7 +45,7 @@ function CityCards() {
         city.map((City) => {
           let photos = require(`../assets/${City.photo}`).default;
           return (
-            <Container key={City.id}>
+            <Container key={City.name}>
               <Card className="my-3">
                 <Card.Img variant="top" src={photos} />
                 <Card.Body>
@@ -62,7 +61,7 @@ function CityCards() {
           );
         })
       ) : (
-        <Alert className="col-xl-6" variant="warning">
+        <Alert className="col-xl-6" variant="warning" >
           The city was not found
         </Alert>
       )}
