@@ -12,7 +12,7 @@ function Itinerary() {
     axios
       .get("http://localhost:4000/api/cities/" + id)
       .then((res) => setItinerary(res.data.response));
-  }, []);
+  }, [id]);
 
   return (
     <>
