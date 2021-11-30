@@ -7,6 +7,7 @@ body {
   position: relative;
   padding-bottom: 27vh;
   min-height: 100vh;
+  background-color: #757575;
 }
 
 .img {
@@ -28,6 +29,9 @@ body {
 h2,
 h3 {
   font-weight: 900;
+}
+.navFooter {
+  width: 5vw;
 }
 .btn-outline-info {
   width: 25vh;
@@ -70,7 +74,7 @@ img:hover {
   -webkit-filter: saturate(0%);
   -moz-filter: saturate(0%);
 }
-.navFooter:hover {
+.btnFooter:hover {
   font-size: 18px;
   text-shadow: 3px 3px 3px rgb(255, 255, 255);
 }
@@ -104,6 +108,7 @@ footer div {
   color: aliceblue;
 }
 .icons {
+  width: 6vh;
   display: flex;
   flex-direction: column;
 }
@@ -176,26 +181,36 @@ footer h3 {
   text-shadow: 2px 2px 2px rgb(253, 253, 253);
   -webkit-text-stroke: 2px black;
 }
-.imgItynerari {
-  background-image: url("./assets/itinerario.jpg");
+.imgItineray {
   background-repeat: no-repeat;
   background-position: top;
   margin-left: auto;
   margin-right: auto;
-  height: 80vh;
+  height: 60vh;
   margin-bottom: 1vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.imgItynerari {
-  font-size: 4vh;
-  font-weight: 700;
-  color: #f0f8ff;
-  text-shadow: 2px 2px 2px rgb(253, 253, 253);
-  -webkit-text-stroke: 2px rgb(0, 0, 0);
+.h2Itineray {
+  text-align: center;
+  margin: 1vh;
 }
-
+.btnItineray {
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  margin-left: 45%;
+  margin-right: 45%;
+}
+.imgPerson {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+.colorCollapse {
+  background-color: #e0e0e0;
+}
 @media (max-width: 500px) {
   body {
     padding-bottom: 60vh;

@@ -4,24 +4,24 @@ import { Link } from "react-router-dom";
 
 function NavBarFooter() {
   return (
-    <Nav>
+    <Nav className="navFooter">
       <Nav.Item>
-        <Nav.Link className="navFooter" as={Link} to="/">
+        <Nav.Link className="btnFooter" as={Link} to="/">
           Home
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link className="navFooter" eventKey={2} as={Link} to="/Cities">
+        <Nav.Link className="btnFooter" eventKey={2} as={Link} to="/Cities">
           Cities
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link className="navFooter" href="#">
+        <Nav.Link className="btnFooter" href="#">
           Sign In
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link className="navFooter" eventKey="#">
+        <Nav.Link className="btnFooter" eventKey="#">
           Sign Up
         </Nav.Link>
       </Nav.Item>

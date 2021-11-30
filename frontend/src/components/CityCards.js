@@ -53,7 +53,7 @@ function CityCards() {
                   <Card.Title>{City.country}</Card.Title>
                   <Card.Text className="mb-4">{City.description}</Card.Text>
                   <Link className="buttonCities m-3" to={`/Cities/${City._id}`}>
-                    Information
+                  Itineraries
                   </Link>
                 </Card.Body>
               </Card>
