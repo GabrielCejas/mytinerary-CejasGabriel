@@ -7,7 +7,7 @@ const citiesControllers = {
     .then((response) => res.json({ response }))
     .catch((err) => console.log(err));
   },
-  loadcities: (req, res) => {
+  uploadCities: (req, res) => {
     const { name, country, description, photo } = req.body;
     new City({ name, country, description, photo })
       .save()

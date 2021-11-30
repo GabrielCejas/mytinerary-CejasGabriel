@@ -27,7 +27,7 @@ function Itinerary() {
           onClick={() => setOpen(!open)}
           aria-controls="example-collapse-text"
           aria-expanded={open}>
-          View More
+          {open ? 'View Less' : 'View More'}
         </Button>
         <Collapse in={open} className="colorCollapse">
           <div id="example-collapse-text">
