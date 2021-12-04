@@ -4,7 +4,7 @@ const City = require("../models/City");
 const citiesControllers = {
   getCities: (req, res) => {
     City.find()
-    .then((response) => res.json({ response }))
+    .then((response) => res.json({ success: true ,response }))
     .catch((err) => console.log(err));
   },
   uploadCities: (req, res) => {
