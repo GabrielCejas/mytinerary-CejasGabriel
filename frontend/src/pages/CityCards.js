@@ -13,7 +13,6 @@ class CityCards extends React.Component {
     this.props.fetchCities();
   }
   filterChanges(filter){
-    console.log(filter)
     this.setState({
       filter: filter
     })
@@ -61,7 +60,7 @@ class CityCards extends React.Component {
             );
           })
         ) : (
-          <Alert className="col-xl-6" variant="warning">
+          <Alert className="col-xl-6 p-5" variant="warning">
             The city was not found
           </Alert>
         )}

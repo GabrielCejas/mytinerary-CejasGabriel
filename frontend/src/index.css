@@ -31,7 +31,7 @@ h3 {
   font-weight: 900;
 }
 .navFooter {
-  width: 5vw;
+  width: 100px;
 }
 .btn-outline-info {
   width: 25vh;
@@ -69,7 +69,7 @@ h3 {
   z-index: 10;
 }
 
-img:hover {
+.card-img-top:hover {
   filter: saturate(0%);
   -webkit-filter: saturate(0%);
   -moz-filter: saturate(0%);
@@ -147,6 +147,11 @@ footer h3 {
   border-radius: 8px;
   padding: 0.4vh;
 }
+.form-label {
+  font-size: 3vh;
+  font-weight: 900;
+  -webkit-text-stroke: 0.8px rgb(255, 255, 255);
+}
 /* @medias */
 @media (max-width: 768px) {
   Footer {
@@ -195,13 +200,15 @@ footer h3 {
 .h2Itineray {
   text-align: center;
   margin: 1vh;
+  -webkit-text-stroke: 0.8px rgb(255, 255, 255);
 }
 .btnItineray {
   justify-content: center;
   display: flex;
   justify-content: center;
-  margin-left: 45%;
-  margin-right: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 15vw;
 }
 .imgPerson {
   border-radius: 50%;
@@ -216,6 +223,34 @@ footer h3 {
   margin-right: 2vw;
   text-align: center;
 }
+.imgItinerayDiv {
+  width: 96%;
+  max-width: 1940px;
+  margin: 0 auto;
+}
+.imgItineray {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 375px) {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    display: none;
+  }
+  .img {
+    background-image: url("../src/assets/320px_375px.jpg");
+  }
+  .h3Footer {
+    font-size: 13px;
+    margin-bottom: 2vh;
+  }
+  .btnItineray {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 35vw;
+  }
+}
+
 @media (max-width: 500px) {
   body {
     padding-bottom: 60vh;
@@ -233,12 +268,14 @@ footer h3 {
     background-image: url("./assets/mapMovil.jpg");
   }
 }
-@media (max-width: 375px) {
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    display: none;
+
+@media (max-width: 1025px) {
+  .h3Footer {
+    font-size: 23px;
+    margin-bottom: 2vh;
   }
-  .img {
-    background-image: url("../src/assets/320px_375px.jpg");
+  .btnItineray {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
