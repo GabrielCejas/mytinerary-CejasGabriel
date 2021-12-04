@@ -10,6 +10,7 @@ const citiesReducer = (state = initialState, action) => {
     case "fetch":
       return {
         ...state,
+        filteredCities: action.payload,
         cities: action.payload,
       };
     case "filterCities":

@@ -17,6 +17,8 @@ class CityCards extends React.Component {
     this.setState({
       filter: filter
     })
+    this.props.filterCities(filter)
+
   }
   render() {
     return (
@@ -36,8 +38,8 @@ class CityCards extends React.Component {
             />
           </Form.Group>
         </Form>
-        {this.props.cities.length > 0 ? (
-          this.props.cities.map((City) => {
+        {this.props.filteredCities.length > 0 ? (
+          this.props.filteredCities.map((City) => {
             let photos = require(`../assets/${City.photo}`).default;
             return (
               <Container key={City.name}>

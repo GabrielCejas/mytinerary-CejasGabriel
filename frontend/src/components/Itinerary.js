@@ -9,16 +9,12 @@ import citiesActions from "../redux/actions/citiesActions";
 
 function  Itinerary(props) {
 
- 
   const { id } = useParams();
-  console.log(useParams());
-  console.log(useParams())
 
   useEffect(() => {
     props.fetchCitiesID(props.params.id);
   }, []);
-  console.log(props)
-  
+
   function Example() {
     const [open, setOpen] = useState(false);
   
