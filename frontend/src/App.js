@@ -4,9 +4,11 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Cities from "./pages/Cities";
-import Itinerary from "./pages/Itinerary";
+import Itinerary from "./components/Itinerary";
 import Error404 from "./pages/Error404";
+import {withRouter} from "./utils/withRouter"
 
+const ItinerariesProsp = withRouter(Itinerary)
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Cities" element={<Cities />} />
-        <Route path="/Cities/:id" element={<Itinerary />} />
+        <Route path="/Cities/:id" element={<ItinerariesProsp />} />
         <Route path="/notFound" element={<Error404 />} />
         <Route path="*" element={<Navigate to="/notFount" />} />
       </Routes>

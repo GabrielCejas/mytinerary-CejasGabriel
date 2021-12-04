@@ -211,6 +211,11 @@ footer h3 {
 .colorCollapse {
   background-color: #e0e0e0;
 }
+.hashtag {
+  display: inline-block;
+  margin-right: 2vw;
+  text-align: center;
+}
 @media (max-width: 500px) {
   body {
     padding-bottom: 60vh;
