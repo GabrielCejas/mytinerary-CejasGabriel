@@ -4,12 +4,9 @@ import { Link } from "react-router-dom";
 import { Card, Button, Collapse, Alert } from "react-bootstrap/";
 import { FcLike, FcMoneyTransfer } from "react-icons/fc";
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
 import citiesActions from "../redux/actions/citiesActions";
 
 function Itinerary(props) {
-  const { id } = useParams();
-
   useEffect(() => {
     props.fetchCitiesID(props.params.id);
   }, []);
@@ -33,15 +30,6 @@ function Itinerary(props) {
               className="imgItineray img-fluid"
               src={require("../assets/enConstruccion.jpg").default}
             />
-            The Brandenburg Gate (in German, Brandenburger Tor) is an ancient
-            gateway to Berlin and one of the main symbols of both the city and
-            Germany. It is not a triumphal arch, but it was the access, in the
-            manner of propylaea, to the "New Berlin" of the time. It is located
-            in the current center of the city, in the Paris Square, forming the
-            end of the Unter den Linden avenue and marking the beginning of the
-            great Tiergarten park and the Straße des . Juni. The Reichstag and
-            Potsdamer Platz are also located nearby. Important events in
-            Berlin's history that are connected with the Brandenburg Gate
           </div>
         </Collapse>
       </>
@@ -107,7 +95,7 @@ function Itinerary(props) {
         </Alert>
       )}
       <Button
-        className="my-3 text-light bg-dark btnItineray col-6 col-xs-8 col-sm-6 col-xl-2 col-xxl-1 "
+        className="my-3 text-light bg-dark btnItineray col-7 col-xs-8 col-sm-8 col-xl-2 col-xxl-1 "
         eventkey={2}
         as={Link}
         to="/Cities"

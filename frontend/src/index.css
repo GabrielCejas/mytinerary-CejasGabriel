@@ -152,21 +152,7 @@ footer h3 {
   font-weight: 900;
   -webkit-text-stroke: 0.8px rgb(255, 255, 255);
 }
-/* @medias */
-@media (max-width: 768px) {
-  Footer {
-    flex-direction: column;
-    height: 55vh;
-  }
-  body {
-    padding-bottom: 55vh;
-  }
 
-  .carousel {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-}
 .pageCity {
   background-image: url("./assets/map.jpg");
   background-repeat: no-repeat;
@@ -186,17 +172,7 @@ footer h3 {
   text-shadow: 2px 2px 2px rgb(253, 253, 253);
   -webkit-text-stroke: 2px black;
 }
-.imgItineray {
-  background-repeat: no-repeat;
-  background-position: top;
-  margin-left: auto;
-  margin-right: auto;
-  height: 60vh;
-  margin-bottom: 1vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .h2Itineray {
   text-align: center;
   margin: 1vh;
@@ -225,12 +201,14 @@ footer h3 {
 }
 .imgItinerayDiv {
   width: 96%;
-  max-width: 1940px;
+  max-width: 2450px;
   margin: 0 auto;
+  object-fit: cover;
 }
 .imgItineray {
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 @media (max-width: 375px) {
   .carousel-control-prev-icon,
@@ -256,7 +234,7 @@ footer h3 {
     padding-bottom: 60vh;
   }
   Footer {
-    height: 60vh;
+    height: 62vh;
   }
   .img h3 {
     text-align: center;
@@ -269,6 +247,22 @@ footer h3 {
   }
 }
 
+/* @medias */
+@media (max-width: 768px) {
+  Footer {
+    flex-direction: column;
+    height: 55vh;
+  }
+  body {
+    padding-bottom: 55vh;
+  }
+
+  .carousel {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
 @media (max-width: 1025px) {
   .h3Footer {
     font-size: 23px;
@@ -277,5 +271,8 @@ footer h3 {
   .btnItineray {
     margin-left: auto;
     margin-right: auto;
+  }
+  .btnFooter {
+    font-size: 18px;
   }
 }
