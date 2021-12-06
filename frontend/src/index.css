@@ -231,10 +231,10 @@ footer h3 {
 
 @media (max-width: 500px) {
   body {
-    padding-bottom: 60vh;
+    padding-bottom: 62vh;
   }
   Footer {
-    height: 62vh;
+    height: 65vh;
   }
   .img h3 {
     text-align: center;
