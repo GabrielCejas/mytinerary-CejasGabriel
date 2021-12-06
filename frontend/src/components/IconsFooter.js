@@ -1,6 +1,6 @@
 import {  FaTwitter, FaFacebookSquare, FaLinkedin, FaGoogle } from "react-icons/fa";
 
-function IconsFooter() {
+const IconsFooter = () => {
   return (
     <div className="icons">
       <h3>

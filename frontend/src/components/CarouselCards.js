@@ -1,7 +1,7 @@
 import React from "react";
 import CardCarousel from "./CardCarousel";
 
-function CarouselCards() {
+const CarouselCards = () => {
   const arrayCountries = [
     [
       { name: "Berlin", country: "Germany", photo: "berlin.jpg" },

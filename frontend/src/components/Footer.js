@@ -3,7 +3,7 @@ import NavBarFooter from "./NavBarFooter";
 import Contact from "./Contact"
 import IconsFooter from "./IconsFooter";
 
-function Footer(){
+const Footer = () => {
     return(
         <footer>
             <NavBarFooter/>

@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Button, Collapse, Alert } from "react-bootstrap/";
-import { FcLike, FcMoneyTransfer } from "react-icons/fc";
+import { FcLike } from "react-icons/fc";
 import { connect } from "react-redux";
 import citiesActions from "../redux/actions/citiesActions";
 
-function Itinerary(props) {
+const Itinerary = (props) => {
   useEffect(() => {
     props.fetchCitiesID(props.params.id);
   }, []);

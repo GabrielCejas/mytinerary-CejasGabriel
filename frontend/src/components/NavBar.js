@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import image from "../assets/login.svg";
 
 const img = <img src={image} />;
-function NavBar() {
+const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="px-5 py-3">
       <Navbar.Brand href="#home">MyTinerary!</Navbar.Brand>

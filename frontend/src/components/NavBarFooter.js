@@ -2,7 +2,7 @@ import React from "react";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function NavBarFooter() {
+const NavBarFooter= () => {
   return (
     <Nav className="navFooter">
       <Nav.Item>

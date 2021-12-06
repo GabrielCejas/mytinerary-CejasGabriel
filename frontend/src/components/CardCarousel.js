@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap/";
 import { Carousel } from "react-bootstrap/";
 
-function CardCarousel(props) {
+const CardCarousel = (props) => {
   const { arrayCountries } = props;
   return (
     <Carousel className="my-5 Carousel" fade>

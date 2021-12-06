@@ -2,7 +2,7 @@ import React from "react";
 import "animate.css";
 import ButtonWelcome from "../components/ButtonWelcome";
 
-function Hero() {
+const Hero = () => {
   return (
     <div className="img">
       <h2 className="welcome animate__animated animate__backInLeft">

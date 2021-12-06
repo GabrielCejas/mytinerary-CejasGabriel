@@ -1,6 +1,6 @@
 import React from "react";
 
-function Contact() {
+const Contact = () => {
   return (
     <div>
       <h3 className="h3Footer">MyTinerary Proyect 2021 - All Rights Reserved</h3>
