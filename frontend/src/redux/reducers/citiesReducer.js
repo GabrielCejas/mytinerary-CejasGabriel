@@ -1,8 +1,7 @@
 const initialState = {
   cities: [],
-  cities2:[],
-  filteredCities:[]
-
+  cities2: [],
+  filteredCities: [],
 };
 
 const citiesReducer = (state = initialState, action) => {
@@ -14,13 +13,16 @@ const citiesReducer = (state = initialState, action) => {
         cities: action.payload,
       };
     case "filterCities":
-      const filterCities = state.cities.filter(city => city.name.toLowerCase().startsWith(action.payload.toString().toLowerCase().trim()))
-      return{
+      const filterCities = state.cities.filter((city) =>
+        city.name
+          .toLowerCase()
+          .startsWith(action.payload.toString().toLowerCase().trim())
+      );
+      return {
         ...state,
-        filteredCities : filterCities
-      }
+        filteredCities: filterCities,
+      };
     case "fetchID":
-      console.log(action.payload);
       return {
         ...state,
         cities2: action.payload,

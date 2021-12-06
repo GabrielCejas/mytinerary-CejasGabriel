@@ -48,12 +48,12 @@ function Itinerary(props) {
               Available Itineraries for {props.cities2[0].country}
             </h2>
           </div>
-          {props.cities2.map((itinerary) => {
+          {props.cities2.map((itinerary, id) => {
             return (
               <>
                 <Card
                   className="text-center col-xl-6 col-sm-8 col-sm-8 col-10 mb-4"
-                  key={itinerary.id}
+                  key={id}
                 >
                   <Card.Header>{props.cities2.nameItinerary}</Card.Header>
                   <Card.Body>
@@ -70,15 +70,17 @@ function Itinerary(props) {
                     <div>
                       {itinerary.iLikeIt} <FcLike />
                     </div>
-                    <div>
-                      Price: {itinerary.price} <FcMoneyTransfer />
-                    </div>
+                    <div>Price: {"💵".repeat(itinerary.price)}</div>
                     <div>Durattion: {itinerary.durattion}hs</div>
                   </Card.Footer>
                   <Card.Footer className="text-muted d-flex justify-content-around mb-2">
                     <div>
-                      {itinerary.hashtags.map((hashtag) => {
-                        return <p className="hashtag">{hashtag}</p>;
+                      {itinerary.hashtags.map((hashtag, id) => {
+                        return (
+                          <p className="hashtag" key={id}>
+                            {hashtag}
+                          </p>
+                        );
                       })}
                     </div>
                   </Card.Footer>
