@@ -19,8 +19,8 @@ const NavBar = () => {
             Cities
           </Nav.Link>
           <NavDropdown title={img} id="basic-nav-dropdown" className="login">
-            <NavDropdown.Item as={Link} to ="/">Sign in</NavDropdown.Item>
-            <NavDropdown.Item as={Link} to ="/">Sign up</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to ="/signin">Sign in</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to ="/signup">Sign up</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

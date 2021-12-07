@@ -16,12 +16,12 @@ const NavBarFooter= () => {
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link className="btnFooter" href="#">
+        <Nav.Link className="btnFooter" as={Link} to ="/signin">
           Sign In
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link className="btnFooter" eventKey="#">
+        <Nav.Link className="btnFooter" eventKey="2" as={Link} to ="/signup">
           Sign Up
         </Nav.Link>
       </Nav.Item>

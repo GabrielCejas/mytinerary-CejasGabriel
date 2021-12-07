@@ -1,3 +1,5 @@
+/* Estilos generales */
+
 html * {
   margin: 0;
   padding: 0;
@@ -115,6 +117,7 @@ footer div {
 footer h3 {
   color: aliceblue;
 }
+
 /* Estilos del Carrucel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -210,6 +213,43 @@ footer h3 {
   height: auto;
   object-fit: cover;
 }
+/* Registro */
+.signTitle {
+  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+}
+.signIn,
+.signUp {
+  display: flex;
+  background-image: url("./assets/signin.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  height: 95vh;
+}
+.signInForm,
+.signUpForm {
+  margin: auto;
+  align-items: center;
+  padding: 3vh;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 2px;
+}
+.signInForm > h3 {
+  text-align: center;
+}
+.signInButton {
+  justify-content: center;
+}
+.signh5 {
+  color: #212529;
+  font-size: 1.4rem;
+  font-weight: 900;
+  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+}
+
 @media (max-width: 375px) {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
@@ -227,14 +267,32 @@ footer h3 {
     margin-right: auto;
     max-width: 35vw;
   }
+  .signUp {
+    height: 100vh;
+  }
+  .signUpForm {
+    height: 95vh;
+  }
+  .signInForm {
+    height: 75vh;
+  }
+  .signh5 {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 500px) {
   body {
     padding-bottom: 62vh;
   }
-  Footer {
-    height: 65vh;
+  footer {
+    height: 400px;
+  }
+  .signUpForm {
+    height: 97vh;
+  }
+  .signInForm {
+    height: 62vh;
   }
   .img h3 {
     text-align: center;
@@ -249,7 +307,7 @@ footer h3 {
 
 /* @medias */
 @media (max-width: 768px) {
-  Footer {
+  footer {
     flex-direction: column;
     height: 55vh;
   }
@@ -260,6 +318,12 @@ footer h3 {
   .carousel {
     margin-left: 10%;
     margin-right: 10%;
+  }
+  .signUpForm {
+    height: 87vh;
+  }
+  .signInForm {
+    height: 60vh;
   }
 }
 
@@ -274,5 +338,24 @@ footer h3 {
   }
   .btnFooter {
     font-size: 18px;
+  }
+  .signUpForm {
+    height: 85vh;
+  }
+}
+@media (max-width: 1442px) {
+  .signUpForm {
+    height: 85vh;
+  }
+  .signInForm {
+    height: 55vh;
+  }
+}
+@media (max-width: 2600px) {
+  .signInForm {
+    height: 55vh;
+  }
+  .signUpForm {
+    height: 85vh;
   }
 }
