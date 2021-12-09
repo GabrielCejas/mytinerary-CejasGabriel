@@ -37,25 +37,25 @@ const Itinerary = (props) => {
   }
   return (
     <>
-      {props.cities2.length > 0 ? (
+      {props.itinerary.length > 0 ? (
         <>
           <div className="imgItinerayDiv">
             <img
               className="imgItineray"
-              src={require(`../assets/${props.cities2[0].photo}`).default}
+              src={require(`../assets/${props.itinerary[0].photo}`).default}
             />
             <h2 className="h2Itineray">
-              Available Itineraries for {props.cities2[0].country}
+              Available Itineraries for {props.itinerary[0].country}
             </h2>
           </div>
-          {props.cities2.map((itinerary, id) => {
+          {props.itinerary.map((itinerary, id) => {
             return (
               <>
                 <Card
                   className="text-center col-xl-6 col-sm-8 col-sm-8 col-10 mb-4"
                   key={id}
                 >
-                  <Card.Header>{props.cities2.nameItinerary}</Card.Header>
+                  <Card.Header>{props.itinerary.nameItinerary}</Card.Header>
                   <Card.Body>
                     <img
                       className="imgPerson"
@@ -114,7 +114,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => {
   return {
-    cities2: state.citiesReducer.cities2,
+    itinerary: state.citiesReducer.itinerary,
   };
 };
 

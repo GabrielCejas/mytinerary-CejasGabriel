@@ -1,6 +1,6 @@
 const initialState = {
   cities: [],
-  cities2: [],
+  itinerary: [],
   filteredCities: [],
 };
 
@@ -25,7 +25,7 @@ const citiesReducer = (state = initialState, action) => {
     case "fetchID":
       return {
         ...state,
-        cities2: action.payload,
+        itinerary: action.payload,
       };
     default:
       return state;
