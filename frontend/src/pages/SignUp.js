@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FormUp } from "../components/FormUp";
+import  FormUp  from "../components/FormUp";
 
 const SignUp = () => {
   const [countries, setCountries] = useState([]);

@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios from "axios"
+import { connect } from "react-redux";
+import userActions from "../redux/actions/userActions";
 
-const FormIn = () => {
+const FormIn = ({logIn}) => {
   const {
     register,
     handleSubmit,
@@ -16,7 +19,14 @@ const FormIn = () => {
     password: "",
   });
 
-  const onSubmit = (e) => console.log(e);
+  const[error, setError] = useState(null)
+
+  const onSubmit = async (e) => {
+    let respuesta = await logIn(form)
+    if(!respuesta.data.success){
+      setError(respuesta.data.error)
+    }
+  };
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -80,6 +90,7 @@ const FormIn = () => {
             </Alert>
           )}
         </Form.Group>
+        <Alert className="col-xl-12 p-0 mb-2" variant="danger">{error}</Alert>
         <Button
           bg="dark"
           variant="dark"
@@ -102,4 +113,8 @@ const FormIn = () => {
   );
 };
 
-export default FormIn;
+const mapDispatchToProps = {
+  logIn: userActions.logIn,
+  signUp: userActions.signUp
+}
+export default connect(null, mapDispatchToProps)(FormIn);

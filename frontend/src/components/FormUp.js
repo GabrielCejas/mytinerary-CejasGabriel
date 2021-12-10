@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { connect } from "react-redux";
+import userActions from "../redux/actions/userActions";
 
-export const FormUp = ({ name }) => {
+
+ const FormUp = ({ name, signUp, logIn }) => {
   const {
     register,
     handleSubmit,
@@ -14,13 +17,20 @@ export const FormUp = ({ name }) => {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
-    emailAdress: "",
+    email: "",
     password: "",
-    yourPicture: "",
-    select: "",
+    photo: "",
+    country: "",
   });
 
-  const onSubmit = (e) => console.log(e);
+  const[error, setError] = useState(null)
+
+  const onSubmit = async (e) => {
+    let respuesta = await signUp(form)
+    if(!respuesta.data.success){
+      setError(respuesta.data.error)
+    }
+  };
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -81,22 +91,22 @@ export const FormUp = ({ name }) => {
         </Form.Group>
         <Form.Group className="mb-3 py-3" controlId="formBasicEmail">
           <Form.Control
-            {...register("emailAdress", {
+            {...register("email", {
               required: { value: true, message: "Field is required" },
               pattern: {
                 pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\. [A-Z]{2,4}$/i,
                 message: "The format is not correct",
               },
             })}
-            name="emailAdress"
+            name="email"
             type="email"
             placeholder="Please, enter your email adress"
             onChange={handleChange}
-            value={form.emailAdress}
+            value={form.email}
           />
-          {errors.emailAdress && (
+          {errors.email && (
             <Alert className="col-xl-12 p-0 m-0" variant="warning">
-              <span>{errors.emailAdress.message}</span>
+              <span>{errors.email.message}</span>
             </Alert>
           )}
         </Form.Group>
@@ -126,27 +136,27 @@ export const FormUp = ({ name }) => {
         </Form.Group>
         <Form.Group className="mb-3 py-3">
           <Form.Control
-            {...register("yourPicture", {
+            {...register("photo", {
               required: {
                 value: true,
                 message: "Field is required",
               },
             })}
-            name="yourPicture"
+            name="photo"
             type="text"
             placeholder="Please, enter the URL of your picture"
             onChange={handleChange}
-            value={form.yourPicture}
+            value={form.photo}
           />
-          {errors.yourPicture && (
+          {errors.photo && (
             <Alert className="col-xl-12 p-0 m-0" variant="warning">
-              <span>{errors.yourPicture.message}</span>
+              <span>{errors.photo.message}</span>
             </Alert>
           )}
         </Form.Group>
         {name.length > 0 ? (
           <Form.Select
-            {...register("select", {
+            {...register("country", {
               required: {
                 value: true,
                 message: "Field is required",
@@ -154,13 +164,13 @@ export const FormUp = ({ name }) => {
             })}
             className="mb-3"
             aria-label="Default select example"
-            name="select"
+            name="country"
             onChange={handleChange}
-            value={form.select}
+            value={form.country}
           >
-            {errors.select && (
+            {errors.country && (
               <Alert className="col-xl-12 p-0 m-0" variant="warning">
-                <span>{errors.select.message}</span>
+                <span>{errors.country.message}</span>
               </Alert>
             )}
             <option>Choose your country</option>
@@ -177,6 +187,7 @@ export const FormUp = ({ name }) => {
             </option>
           </Form.Select>
         )}
+        <Alert className="col-xl-12 p-0 mb-2" variant="danger">{error}</Alert>
         <Button
           bg="dark"
           variant="dark"
@@ -186,7 +197,6 @@ export const FormUp = ({ name }) => {
           Sign Up!
         </Button>
         <h5 className="py-3 signh5">
-          {" "}
           Or you can sign in with your Google account
         </h5>
         <h5 className="py-3 signh5">
@@ -199,3 +209,10 @@ export const FormUp = ({ name }) => {
     </div>
   );
 };
+
+const mapDispatchToProps = {
+  logIn: userActions.logIn,
+  signUp: userActions.signUp
+}
+
+export default connect(null, mapDispatchToProps)(FormUp);
