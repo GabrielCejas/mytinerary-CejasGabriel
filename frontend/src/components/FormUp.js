@@ -5,8 +5,7 @@ import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import userActions from "../redux/actions/userActions";
 
-
- const FormUp = ({ name, signUp, logIn }) => {
+const FormUp = ({ name, signUp, logIn }) => {
   const {
     register,
     handleSubmit,
@@ -23,12 +22,14 @@ import userActions from "../redux/actions/userActions";
     country: "",
   });
 
-  const[error, setError] = useState(null)
-
+  const [error, setError] = useState(null);
   const onSubmit = async (e) => {
-    let respuesta = await signUp(form)
-    if(!respuesta.data.success){
-      setError(respuesta.data.error)
+    let respuesta = await signUp(form);
+    if (!respuesta.data.success) {
+      setError(respuesta.data.errors.map((msj)=>{
+        return (msj.message)
+      }));
+      console.log(respuesta.data.errors[0])
     }
   };
 
@@ -94,7 +95,8 @@ import userActions from "../redux/actions/userActions";
             {...register("email", {
               required: { value: true, message: "Field is required" },
               pattern: {
-                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\. [A-Z]{2,4}$/i,
+                value:
+                  /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
                 message: "The format is not correct",
               },
             })}
@@ -118,7 +120,7 @@ import userActions from "../redux/actions/userActions";
                 message: "Field is required",
               },
               minLength: {
-                value: 6,
+                value: 5,
                 message: "The password must be at least 6 characters long",
               },
             })}
@@ -187,7 +189,9 @@ import userActions from "../redux/actions/userActions";
             </option>
           </Form.Select>
         )}
-        <Alert className="col-xl-12 p-0 mb-2" variant="danger">{error}</Alert>
+        <Alert className="col-xl-12 p-0 mb-2" variant="danger">
+          {error}
+        </Alert>
         <Button
           bg="dark"
           variant="dark"
@@ -212,7 +216,7 @@ import userActions from "../redux/actions/userActions";
 
 const mapDispatchToProps = {
   logIn: userActions.logIn,
-  signUp: userActions.signUp
-}
+  signUp: userActions.signUp,
+};
 
 export default connect(null, mapDispatchToProps)(FormUp);

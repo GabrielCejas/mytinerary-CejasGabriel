@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios"
 import { connect } from "react-redux";
 import userActions from "../redux/actions/userActions";
 
-const FormIn = ({logIn}) => {
+const FormIn = ({ logIn }) => {
   const {
     register,
     handleSubmit,
@@ -19,12 +18,12 @@ const FormIn = ({logIn}) => {
     password: "",
   });
 
-  const[error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   const onSubmit = async (e) => {
-    let respuesta = await logIn(form)
-    if(!respuesta.data.success){
-      setError(respuesta.data.error)
+    let respuesta = await logIn(form);
+    if (!respuesta.data.success) {
+      setError(respuesta.data.error);
     }
   };
 
@@ -49,7 +48,8 @@ const FormIn = ({logIn}) => {
             {...register("email", {
               required: { value: true, message: "Field is required" },
               pattern: {
-                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\. [A-Z]{2,4}$/i,
+                value:
+                  /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
                 message: "The format is not correct",
               },
             })}
@@ -90,7 +90,9 @@ const FormIn = ({logIn}) => {
             </Alert>
           )}
         </Form.Group>
-        <Alert className="col-xl-12 p-0 mb-2" variant="danger">{error}</Alert>
+        <Alert className="col-xl-12 p-0 mb-2" variant="danger">
+          {error}
+        </Alert>
         <Button
           bg="dark"
           variant="dark"
@@ -115,6 +117,6 @@ const FormIn = ({logIn}) => {
 
 const mapDispatchToProps = {
   logIn: userActions.logIn,
-  signUp: userActions.signUp
-}
+  signUp: userActions.signUp,
+};
 export default connect(null, mapDispatchToProps)(FormIn);
