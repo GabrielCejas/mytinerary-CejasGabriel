@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 const citiesControllers = require("../controllers/citiesControllers");
 const itinerariesControllers = require("../controllers/itinerariesControllers");
 const userController = require("../controllers/userControllers");
@@ -37,5 +38,6 @@ router
 router
   .route("/user/signin")
   .post(userController.logUser)
+
 
 module.exports = router;

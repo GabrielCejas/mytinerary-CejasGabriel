@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import userActions from "../redux/actions/userActions";
+import GoogleLogin from "react-google-login";
 
 const FormIn = ({ logIn }) => {
   const {
@@ -35,6 +36,17 @@ const FormIn = ({ logIn }) => {
     });
   };
 
+  const responseGoogle = async res =>{
+    let logInUser = {
+      email: res.profileObj.email,
+      password: res.profileObj.googleId,
+      isGoogle: true,
+    }
+    let respuesta = await logIn(logInUser);
+    if (!respuesta.data.success) {
+      setError(respuesta.data.error);
+    }
+  }
   return (
     <div className="signIn">
       <Form
@@ -104,6 +116,13 @@ const FormIn = ({ logIn }) => {
         <h5 className="py-3 signh5">
           Or you can sign in with your Google account
         </h5>
+        <GoogleLogin
+          clientId="660945448193-nfbain4p775obq5ea5p3f866pmmkc6ep.apps.googleusercontent.com"
+          buttonText="Sign in With Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={"single_host_origin"}
+        />
         <h5 className="signh5">
           Don't have an account?{" "}
           <Button variant="link" className="signh5" as={Link} to="/signup">

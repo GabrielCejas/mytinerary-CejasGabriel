@@ -10,7 +10,6 @@ const userReducer = (
         photo: action.payload.photo,
       };
     case "LogIn":
-    console.log(action.payload.token)
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("name", action.payload.name);
       localStorage.setItem("photo", action.payload.photo);

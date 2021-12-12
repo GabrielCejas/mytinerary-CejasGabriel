@@ -32,6 +32,12 @@ h2,
 h3 {
   font-weight: 900;
 }
+.photoRegister {
+  border-radius: 50%;
+  max-width: 120px;
+  width: 50%;
+  object-fit: cover;
+}
 .navFooter {
   width: 100px;
 }

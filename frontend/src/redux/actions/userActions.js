@@ -28,6 +28,8 @@ const userActions = {
       dispatch({ type: "logOut" });
     };
   },
+
+
   logInF5: ( token, name, photo) => {
     return (dispatch, getState) => {
       dispatch({ type: "LogIn", payload: { token, name, photo } });

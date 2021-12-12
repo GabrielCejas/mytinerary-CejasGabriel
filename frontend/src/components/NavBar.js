@@ -4,34 +4,51 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import image from "../assets/login.svg";
 import { connect } from "react-redux";
-import userActions from "../redux/actions/userActions"
+import userActions from "../redux/actions/userActions";
 
-const img = <img src={image} />;
+const img2 = <img src={image} />;
 const NavBar = (props) => {
+  const img = <img className="photoRegister img-fluid" src={props.photo} />;
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="px-5 py-3">
       <Navbar.Brand href="#home">
-        MyTinerary! {props.token ? `Welcome to ${props.photo}` : ""}
+        <p>MyTinerary!</p> <p>{props.token ? `Welcome to ${props.name}` : ""}</p>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav " />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ms-auto">
+        <Nav className="ms-auto align-items-center">
           <Nav.Link as={Link} to="/">
             Home
           </Nav.Link>
           <Nav.Link eventKey={2} as={Link} to="/Cities">
             Cities
           </Nav.Link>
-          <NavDropdown title={img} id="basic-nav-dropdown" className="login">
-           {!props.token ?  <NavDropdown.Item as={Link} to="/signin">
-              Sign in
-            </NavDropdown.Item> : ""}
-            {!props.token ? <NavDropdown.Item as={Link} to="/signup">
-              Sign up
-            </NavDropdown.Item> : ""}
-            {props.token ? <NavDropdown.Item onClick={() => props.logOut()}>
-              Sign Out
-            </NavDropdown.Item> : ""}
+          <NavDropdown
+            title={props.token ? img : img2}
+            id="basic-nav-dropdown"
+            className="login"
+          >
+            {!props.token ? (
+              <NavDropdown.Item as={Link} to="/signin">
+                Sign in
+              </NavDropdown.Item>
+            ) : (
+              ""
+            )}
+            {!props.token ? (
+              <NavDropdown.Item as={Link} to="/signup">
+                Sign up
+              </NavDropdown.Item>
+            ) : (
+              ""
+            )}
+            {props.token ? (
+              <NavDropdown.Item onClick={() => props.logOut()}>
+                Sign Out
+              </NavDropdown.Item>
+            ) : (
+              ""
+            )}
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
@@ -47,7 +64,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = {
-  logOut: userActions.logOut
+  logOut: userActions.logOut,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

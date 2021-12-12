@@ -21,7 +21,6 @@ function App(props) {
         localStorage.getItem("token"),
         localStorage.getItem("name"),
         localStorage.getItem("photo")
-        
       );
     }
   }, []);

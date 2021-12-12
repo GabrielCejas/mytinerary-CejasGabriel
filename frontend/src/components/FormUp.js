@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import userActions from "../redux/actions/userActions";
+import GoogleLogin from "react-google-login";
 
 const FormUp = ({ name, signUp, logIn }) => {
   const {
@@ -24,12 +25,13 @@ const FormUp = ({ name, signUp, logIn }) => {
 
   const [error, setError] = useState(null);
   const onSubmit = async (e) => {
-    let respuesta = await signUp(form);
-    if (!respuesta.data.success) {
-      setError(respuesta.data.errors.map((msj)=>{
-        return (msj.message)
-      }));
-      console.log(respuesta.data.errors[0])
+    let response = await signUp(form);
+    if (!response.data.success) {
+      setError(
+        response.data.errors.map((msj) => {
+          return msj.message;
+        })
+      );
     }
   };
 
@@ -39,6 +41,22 @@ const FormUp = ({ name, signUp, logIn }) => {
       ...form,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const responseGoogle = async (res) => {
+    let form = {
+      firstName: res.profileObj.givenName,
+      lastName: res.profileObj.familyName,
+      email: res.profileObj.email,
+      password: res.profileObj.googleId,
+      photo: res.profileObj.imageUrl,
+      country: "Argentina",
+      google: true,
+    }
+    let response = await signUp(form);
+    if (!response.data.success) {
+      setError( response.data.error)
+    }
   };
 
   return (
@@ -203,6 +221,13 @@ const FormUp = ({ name, signUp, logIn }) => {
         <h5 className="py-3 signh5">
           Or you can sign in with your Google account
         </h5>
+        <GoogleLogin
+          clientId="660945448193-nfbain4p775obq5ea5p3f866pmmkc6ep.apps.googleusercontent.com"
+          buttonText="Sign Up With Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={"single_host_origin"}
+        />
         <h5 className="py-3 signh5">
           Already have an account?{" "}
           <Button variant="link" className="signh5" as={Link} to="/signin">

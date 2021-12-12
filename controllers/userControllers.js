@@ -4,7 +4,7 @@ const jwtoken = require("jsonwebtoken");
 
 const userController = {
   newUser: async (req, res) => {
-    const { firstName, lastName, password, email, photo, country, admin } =
+    const { firstName, lastName, password, email, photo, country, google, admin } =
       req.body;
     let hashedPass = bcryptjs.hashSync(password, 10);
     const newUsers = new User({
@@ -14,6 +14,7 @@ const userController = {
       email,
       photo,
       country,
+      google,
       admin,
     });
     try {
@@ -31,10 +32,11 @@ const userController = {
     }
   },
   logUser: async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, isGoogle } = req.body;
     try {
       let userExist = await User.findOne({ email: email });
       if (!userExist) throw new Error("Incorrect email or password");
+      if(userExist.google && !isGoogle) throw new Error("The account was created with Google, you must login with Google")
       let passwordAccepted = bcryptjs.compareSync(password, userExist.password);
       if (!passwordAccepted) throw new Error("Incorrect email or password");
       const token = jwtoken.sign({ ...userExist }, process.env.SECRETKEY);
