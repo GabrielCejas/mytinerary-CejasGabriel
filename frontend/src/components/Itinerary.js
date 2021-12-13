@@ -57,6 +57,7 @@ const Itinerary = (props) => {
                 >
                   <Card.Header>{props.itinerary.nameItinerary}</Card.Header>
                   <Card.Body>
+                  <Card.Title className="my-4">{itinerary.nameItinerary}</Card.Title>
                     <img
                       className="imgPerson"
                       src={

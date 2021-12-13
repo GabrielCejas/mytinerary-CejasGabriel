@@ -11,7 +11,7 @@ require('./config/database')
 const router = require("./routes/routes");
 
 app.use(cors());
-
+app.use(passport.initialize())
 app.use("/api", router);
 
 app.listen(4000, () => {
