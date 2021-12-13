@@ -30,9 +30,19 @@ const userActions = {
   },
 
 
-  logInF5: ( token, name, photo) => {
-    return (dispatch, getState) => {
-      dispatch({ type: "LogIn", payload: { token, name, photo } });
+  logInF5: ( token) => {
+    return async (dispatch, getState) => {
+      try{
+        let response = await axios.get('http://localhost:4000/api/user/verifyToken', {
+    headers: {
+        Authorization: 'Bearer '+ token,
+    }
+})
+    dispatch({type:"SignUp", payload:{token, firstName:response.data.firstName, photo: response.data.photo, _id:response.data._id}})
+    }catch(error) {
+       return  dispatch({type:'logOut' })
+    }
+      
     };
   },
 };

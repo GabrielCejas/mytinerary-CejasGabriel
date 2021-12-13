@@ -12,7 +12,7 @@ const NavBar = (props) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="px-5 py-3">
       <Navbar.Brand href="#home">
-        <p>MyTinerary!</p> <p>{props.token ? `Welcome to ${props.name}` : ""}</p>
+        <p>MyTinerary!</p> <p>{props.token ? `Welcome to ${props.firstName}` : ""}</p>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav " />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
   return {
     token: state.userReducer.token,
     photo: state.userReducer.photo,
-    name: state.userReducer.name,
+    firstName: state.userReducer.firstName,
   };
 };
 const mapDispatchToProps = {

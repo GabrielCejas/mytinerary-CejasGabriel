@@ -4,8 +4,16 @@ const jwtoken = require("jsonwebtoken");
 
 const userController = {
   newUser: async (req, res) => {
-    const { firstName, lastName, password, email, photo, country, google, admin } =
-      req.body;
+    const {
+      firstName,
+      lastName,
+      password,
+      email,
+      photo,
+      country,
+      google,
+      admin,
+    } = req.body;
     let hashedPass = bcryptjs.hashSync(password, 10);
     const newUsers = new User({
       firstName,
@@ -24,7 +32,7 @@ const userController = {
       const token = jwtoken.sign({ ...newUsers }, process.env.SECRETKEY);
       res.json({
         success: true,
-        response: { name: newUsers.firstName, photo: newUsers.photo, token },
+        response: { firstName: newUsers.firstName, photo: newUsers.photo, token },
         error: null,
       });
     } catch (err) {
@@ -34,16 +42,28 @@ const userController = {
   logUser: async (req, res) => {
     const { email, password, isGoogle } = req.body;
     try {
-      let userExist = await User.findOne({ email: email });
-      if (!userExist) throw new Error("Incorrect email or password");
-      if(userExist.google && !isGoogle) throw new Error("The account was created with Google, you must login with Google")
-      let passwordAccepted = bcryptjs.compareSync(password, userExist.password);
+      let user = await User.findOne({ email: email });
+      if (!user) throw new Error("Incorrect email or password");
+      if (user.google && !isGoogle)
+        throw new Error(
+          "The account was created with Google, you must login with Google"
+        );
+      let passwordAccepted = bcryptjs.compareSync(password, user.password);
       if (!passwordAccepted) throw new Error("Incorrect email or password");
-      const token = jwtoken.sign({ ...userExist }, process.env.SECRETKEY);
-      res.json({ success: true, response: {name: userExist.firstName, photo: userExist.photo, token} });
+      const token = jwtoken.sign({ ...user }, process.env.SECRETKEY);
+      res.json({
+        success: true,
+        response: { firstName: user.firstName, photo: user.photo, token },
+      });
     } catch (err) {
       res.json({ success: false, error: err.message });
     }
+  },
+  verifyToken: (req, res) => {
+    res.json({
+      firstName: req.user.firstName,
+      photo: req.user.photo,
+    });
   },
 };
 

@@ -19,10 +19,9 @@ function App(props) {
     if (localStorage.getItem("token")) {
       props.logInF5(
         localStorage.getItem("token"),
-        localStorage.getItem("name"),
-        localStorage.getItem("photo")
       );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <BrowserRouter>

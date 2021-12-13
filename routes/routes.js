@@ -39,5 +39,8 @@ router
   .route("/user/signin")
   .post(userController.logUser)
 
+router
+  .route ("/user/verifyToken")
+  .get(passport.authenticate('jwt', {session:false}), userController.verifyToken)
 
 module.exports = router;
