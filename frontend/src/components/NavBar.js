@@ -12,7 +12,8 @@ const NavBar = (props) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="px-5 py-3">
       <Navbar.Brand href="#home">
-        <p>MyTinerary!</p> <p>{props.token ? `Welcome to ${props.firstName}` : ""}</p>
+        <p>MyTinerary!</p>{" "}
+        <p>{props.token ? `Welcome to ${props.firstName}` : ""}</p>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav " />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -44,7 +45,7 @@ const NavBar = (props) => {
             )}
             {props.token ? (
               <NavDropdown.Item onClick={() => props.logOut()}>
-                Sign Out
+                Log Out
               </NavDropdown.Item>
             ) : (
               ""
