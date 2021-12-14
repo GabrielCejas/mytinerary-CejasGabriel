@@ -1,19 +1,11 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import  FormUp  from "../components/FormUp";
 
-const SignUp = () => {
-  const [countries, setCountries] = useState([]);
+import React, { Component } from "react";
+import FormUp from "../components/FormUp";
 
-  useEffect(() => {
-    axios
-      .get("https://restcountries.com/v2/all?fields=name")
-      .then((res) => setCountries(res.data));
-  }, []);
-  
-  return (
-    <FormUp name={countries}/>
-  );
-};
+class SignUp extends Component {
+  render() {
+    return <FormUp />;
+  }
+}
 
 export default SignUp;

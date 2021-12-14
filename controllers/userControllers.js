@@ -4,27 +4,10 @@ const jwtoken = require("jsonwebtoken");
 
 const userController = {
   newUser: async (req, res) => {
-    const {
-      firstName,
-      lastName,
-      password,
-      email,
-      photo,
-      country,
-      google,
-      admin,
-    } = req.body;
+    const {firstName, lastName, password, email, photo, country, google, admin,} = req.body;
+    
     let hashedPass = bcryptjs.hashSync(password, 10);
-    const newUsers = new User({
-      firstName,
-      lastName,
-      password: hashedPass,
-      email,
-      photo,
-      country,
-      google,
-      admin,
-    });
+    const newUsers = new User({firstName, lastName, password: hashedPass, email, photo, country, google, admin,});
     try {
       let userExist = await User.findOne({ email: email });
       if (userExist) throw new Error("Email already in use");

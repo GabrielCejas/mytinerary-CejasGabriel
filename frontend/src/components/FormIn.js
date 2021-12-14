@@ -136,6 +136,5 @@ const FormIn = ({ logIn }) => {
 
 const mapDispatchToProps = {
   logIn: userActions.logIn,
-  signUp: userActions.signUp,
 };
 export default connect(null, mapDispatchToProps)(FormIn);

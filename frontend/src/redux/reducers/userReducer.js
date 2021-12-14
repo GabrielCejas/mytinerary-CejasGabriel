@@ -4,6 +4,9 @@ const userReducer = (
 ) => {
   switch (action.type) {
     case "SignUp":
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("firstName", action.payload.firstName);
+      localStorage.setItem("photo", action.payload.photo);
       return {
         token: action.payload.token,
         firstName: action.payload.firstName,

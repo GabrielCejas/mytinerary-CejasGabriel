@@ -22,7 +22,7 @@ const validator = (req, res, next) => {
     }),
     photo: joi.string().trim().min(4).required().messages({
       "string.empty": "The field cannot be empty",
-      "string.min": "The photo must have a minimum of 4 letters..",
+      "string.min": "The URL of the photo must be at least 4 letters long...",
     }),
     country: joi.string().trim().required().messages({
       "string.empty": "The field cannot be empty",

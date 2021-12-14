@@ -9,6 +9,7 @@ import citiesActions from "../redux/actions/citiesActions";
 const Itinerary = (props) => {
   useEffect(() => {
     props.fetchCitiesID(props.params.id);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function Example() {

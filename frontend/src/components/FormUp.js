@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -6,7 +7,15 @@ import { connect } from "react-redux";
 import userActions from "../redux/actions/userActions";
 import GoogleLogin from "react-google-login";
 
-const FormUp = ({ name, signUp, logIn }) => {
+const FormUp = ({ signUp }) => {
+
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://restcountries.com/v2/all?fields=name")
+      .then((res) => setCountries(res.data));
+  }, []);
   const {
     register,
     handleSubmit,
@@ -28,8 +37,8 @@ const FormUp = ({ name, signUp, logIn }) => {
     let response = await signUp(form);
     if (!response.data.success) {
       setError(
-        response.data.errors.map((msj) => {
-          return msj.message;
+        response.data.errors.map((msj, id) => {
+          return <p key={id}>{msj.message}</p>;
         })
       );
     }
@@ -174,7 +183,7 @@ const FormUp = ({ name, signUp, logIn }) => {
             </Alert>
           )}
         </Form.Group>
-        {name.length > 0 ? (
+        {countries.length > 0 ? (
           <Form.Select
             {...register("country", {
               required: {
@@ -194,7 +203,7 @@ const FormUp = ({ name, signUp, logIn }) => {
               </Alert>
             )}
             <option>Choose your country</option>
-            {name.map((country, id) => (
+            {countries.map((country, id) => (
               <option value={country.name} key={id}>
                 {country.name}
               </option>
@@ -240,7 +249,6 @@ const FormUp = ({ name, signUp, logIn }) => {
 };
 
 const mapDispatchToProps = {
-  logIn: userActions.logIn,
   signUp: userActions.signUp,
 };
 
