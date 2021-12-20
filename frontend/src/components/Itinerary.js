@@ -5,21 +5,37 @@ import { Card, Button, Collapse, Alert } from "react-bootstrap/";
 import { FcLike } from "react-icons/fc";
 import { connect } from "react-redux";
 import citiesActions from "../redux/actions/citiesActions";
+import itinerariesActions from "../redux/actions/itinerariesActions";
+import Activities from "./Activities";
 
 const Itinerary = (props) => {
   useEffect(() => {
     props.fetchCitiesID(props.params.id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function Example() {
+  function Example(id) {
     const [open, setOpen] = useState(false);
+    const [activities, setactivities] = useState([]);
+
+    async function getActivities(id) {
+      try {
+        let respuesta = await props.getActivitiesItinerary(id);
+        setactivities(respuesta);
+        setOpen(!open);
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
     return (
       <>
         <Button
           className=" btnItineray text-light bg-dark col-sm-4 col-8 col-xl-2 col-xxl-2"
-          onClick={() => setOpen(!open)}
+          // eslint-disable-next-line no-sequences
+          onClick={() => {
+            getActivities(id.id);
+          }}
           aria-controls="example-collapse-text"
           aria-expanded={open}
         >
@@ -27,10 +43,7 @@ const Itinerary = (props) => {
         </Button>
         <Collapse in={open} className="colorCollapse">
           <div id="example-collapse-text">
-            <img
-              className="imgItineray img-fluid"
-              src={require("../assets/enConstruccion.jpg").default}
-            />
+            {activities.length > 0 && <Activities activity={activities} />}
           </div>
         </Collapse>
       </>
@@ -58,7 +71,9 @@ const Itinerary = (props) => {
                 >
                   <Card.Header>{props.itinerary.nameItinerary}</Card.Header>
                   <Card.Body>
-                  <Card.Title className="my-4">{itinerary.nameItinerary}</Card.Title>
+                    <Card.Title className="my-4">
+                      {itinerary.nameItinerary}
+                    </Card.Title>
                     <img
                       className="imgPerson"
                       src={
@@ -86,7 +101,7 @@ const Itinerary = (props) => {
                       })}
                     </div>
                   </Card.Footer>
-                  <Example />
+                  <Example id={itinerary._id} />
                 </Card>
               </>
             );
@@ -108,10 +123,11 @@ const Itinerary = (props) => {
       </Button>
     </>
   );
-}
+};
 
 const mapDispatchToProps = {
   fetchCitiesID: citiesActions.fetchCitiesID,
+  getActivitiesItinerary: itinerariesActions.getActivitiesItinerary,
 };
 
 const mapStateToProps = (state) => {

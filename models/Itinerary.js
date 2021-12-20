@@ -9,7 +9,12 @@ const itinerarySchema = new mongoose.Schema({
   iLikeIt: { type: Number, required: true },
   price: { type: Number, required: true },
   hashtags: { type: Array },
-  comments: { type: String },
+  comments: [
+    {
+      comment: { type: String },
+      userId: { type: mongoose.Types.ObjectId, ref: "user" },
+    },
+  ],
   durattion: { type: Number, required: true },
   photo: { type: String, required: true },
   photo2: { type: String, required: true },

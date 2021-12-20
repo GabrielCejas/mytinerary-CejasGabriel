@@ -55,5 +55,63 @@ const itinerariesControllers = {
       console.log(error)
     }
   },
+  likeItinerary:(req,res) =>{
+    Itinerary.findOne({_id: req.params.id})
+    .then((itinerary) =>{
+        if(itinerary.likes.includes(req.user._id)){
+           Itinerary.findOneAndUpdate({_id:req.params.id}, {$pull:{likes:req.user.id}},{new:true})
+           .then((newItinerary)=> res.json({success:true, response:newItinerary.likes}))
+           .catch((error) => console.log(error))
+        }else{
+            Itinerary.findOneAndUpdate({_id: req.params.id}, {$push:{likes:req.user.id}},{new:true})
+            .then((newItinerary) => res.json({success:true, response:newItinerary.likes}))
+            .catch((error) => console.log(error))
+        }
+    })
+    .catch((error) => res.json({success:false, response:error}))
+},
+modifyComment: async (req, res) => {
+    switch(req.body.type){
+        case "addComment":
+            try{
+                let newComment = await Itinerary.findOneAndUpdate({_id:req.params.id}, {$push:{comments :{comment:req.body.comment, userId: req.user._id}}}, {new:true}).populate("comments.userId")
+                if(newComment){
+                   res.json({success:true , response:newComment.comments})
+                }else{
+                    throw new Error()
+                }
+            }catch (error){
+               res.json({success:false , response:error})
+            }
+           
+           break
+       case "editComment" : 
+           try{
+              let updatedComment = await Itinerary.findOneAndUpdate({"comments._id":req.params.id}, {$set:{"comments.$.comment": req.body.comment}},{new:true})
+               if(updatedComment){
+                   res.json({success:true, response:updatedComment.comments})
+               }else{
+                   throw new Error()
+               }
+           }catch (error){
+               res.json({success:false, response:error.message })
+           }
+           break
+       case "deleteComment":
+           try{
+               let commentDeleted = await  Itinerary.findOneAndUpdate({"comments._id":req.body.commentId}, {$pull:{comments:{_id:req.body.commentId}}})
+               if(commentDeleted){
+                   res.json({success:true})
+               }else {
+                   throw new Error()
+               }
+           }catch (error){
+               res.json({success:false, response:error})
+           }
+        break  
+   }
+}
 };
 module.exports = itinerariesControllers;
+
+

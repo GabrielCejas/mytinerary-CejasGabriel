@@ -8,6 +8,7 @@ const validator = require("../controllers/validator")
 const { getCities, uploadCities, getUniqueCity, deleteCity, changeCity } =
   citiesControllers;
 const { getItineraries, uploadItineraries, getUniqueItinerary, deleteItinerary, changeItinerary, getItineraryByCity } = itinerariesControllers;
+const activitiesController = require("../controllers/activitiesController")
 
 
 router
@@ -31,6 +32,27 @@ router
   .get(getUniqueItinerary)
   .delete(deleteItinerary)
   .put(changeItinerary)
+
+router
+  .route("/itinerary/like/:id")
+  .put(passport.authenticate('jwt', {session:false}),
+    itinerariesControllers.likeItinerary)
+  
+router
+  .route("/itinerary/comments/:id")
+  .put(passport.authenticate('jwt', {session:false}),
+    itinerariesControllers.modifyComment) 
+
+router.route('/activities/:id')
+    .get(activitiesController.getActivitiesItinerary)
+      
+router.route('/activities')
+    .post(activitiesController.addActivities)
+      
+router.route('/activity/:id')
+    .get(activitiesController.getOneActivity)
+    .delete(activitiesController.deleteActivity)
+    .put(activitiesController.editActivity)
 
 router
   .route("/user/signup")
