@@ -295,6 +295,7 @@ footer h3 {
   min-height: 45vh;
 }
 .IconComment {
+  color: greenyellow;
   font-size: 1em;
   cursor: pointer;
   margin: 0 2px;

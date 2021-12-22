@@ -36,8 +36,7 @@ const FormUp = ({ signUp }) => {
   const onSubmit = async (e) => {
     let response = await signUp(form);
     if (!response.data.success) {
-      console.log(response.data.error)
-      if(Array.isArray(response.data.success)){
+      if(Array.isArray(response.data.errors)){
         setError(
           response.data.errors.map((msj, id) => {
             return <p key={id}>{msj.message}</p>;
