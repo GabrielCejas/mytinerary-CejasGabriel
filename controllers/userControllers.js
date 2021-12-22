@@ -36,7 +36,7 @@ const userController = {
       const token = jwtoken.sign({ ...user }, process.env.SECRETKEY);
       res.json({
         success: true,
-        response: { firstName: user.firstName, photo: user.photo, token },
+        response: { firstName: user.firstName, photo: user.photo, _id: user._id, token },
       });
     } catch (err) {
       res.json({ success: false, error: err.message });
@@ -46,6 +46,7 @@ const userController = {
     res.json({
       firstName: req.user.firstName,
       photo: req.user.photo,
+      _id: req.user._id
     });
   },
 };

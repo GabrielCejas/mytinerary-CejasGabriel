@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import citiesActions from "../redux/actions/citiesActions";
 import itinerariesActions from "../redux/actions/itinerariesActions";
 import Activities from "./Activities";
+import Comments from "./Comments";
 
 const Itinerary = (props) => {
   useEffect(() => {
@@ -14,13 +15,13 @@ const Itinerary = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function Example(id) {
+  function Example(comments) {
     const [open, setOpen] = useState(false);
     const [activities, setactivities] = useState([]);
 
-    async function getActivities(id) {
+    async function getActivities() {
       try {
-        let respuesta = await props.getActivitiesItinerary(id);
+        let respuesta = await props.getActivitiesItinerary(comments.comments._id);
         setactivities(respuesta);
         setOpen(!open);
       } catch (err) {
@@ -34,7 +35,7 @@ const Itinerary = (props) => {
           className=" btnItineray text-light bg-dark col-sm-4 col-8 col-xl-2 col-xxl-2"
           // eslint-disable-next-line no-sequences
           onClick={() => {
-            getActivities(id.id);
+            getActivities();
           }}
           aria-controls="example-collapse-text"
           aria-expanded={open}
@@ -44,6 +45,10 @@ const Itinerary = (props) => {
         <Collapse in={open} className="colorCollapse">
           <div id="example-collapse-text">
             {activities.length > 0 && <Activities activity={activities} />}
+            <Comments
+                    comments={comments.comments.comments}
+                    idItinerary={comments.comments._id}
+                  />
           </div>
         </Collapse>
       </>
@@ -66,8 +71,8 @@ const Itinerary = (props) => {
             return (
               <>
                 <Card
+                  key={itinerary.nameItinerary}
                   className="text-center col-xl-6 col-sm-8 col-sm-8 col-10 mb-4"
-                  key={id}
                 >
                   <Card.Header>{props.itinerary.nameItinerary}</Card.Header>
                   <Card.Body>
@@ -101,7 +106,8 @@ const Itinerary = (props) => {
                       })}
                     </div>
                   </Card.Footer>
-                  <Example id={itinerary._id} />
+                  <Example comments={itinerary} />
+               
                 </Card>
               </>
             );

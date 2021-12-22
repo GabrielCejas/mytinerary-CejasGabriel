@@ -77,12 +77,12 @@ const itinerariesActions = {
       }
     };
   },
-  deleteComment: (id, token, commentId) => {
+  deleteComment: (id, token, idComment) => {
     return async () => {
       try {
         let response = await axios.put(
           `http://localhost:4000/api/itinerary/comments/${id}`,
-          { commentId, type: "deleteComment" },
+          {idComment, type: "deleteComment" },
           {
             headers: {
               Authorization: "Bearer " + token,

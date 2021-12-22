@@ -46,10 +46,12 @@ router
 router.route('/activities/:id')
     .get(activitiesController.getActivitiesItinerary)
       
-router.route('/activities')
+router
+    .route('/activities')
     .post(activitiesController.addActivities)
       
-router.route('/activity/:id')
+router
+    .route('/activity/:id')
     .get(activitiesController.getOneActivity)
     .delete(activitiesController.deleteActivity)
     .put(activitiesController.editActivity)

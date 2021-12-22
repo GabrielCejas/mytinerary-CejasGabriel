@@ -256,6 +256,80 @@ footer h3 {
   -webkit-text-stroke: 0.5px rgb(255, 255, 255);
 }
 
+.comments {
+  padding: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px 3px rgba(70, 62, 62, 0.253);
+  min-height: 60vh;
+}
+.containerComment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  width: 70%;
+  border: 2px solid #e6e3e3;
+  background-color: #dbcece;
+  box-shadow: 1px 1px 3px 3px rgba(70, 62, 62, 0.253);
+  margin: 0 auto;
+}
+
+.coment,
+.inputEdit {
+  padding: 1vh 1vw;
+  background-color: transparent;
+  border: none;
+  width: 80%;
+  outline: none;
+}
+
+.comments1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2vh;
+  overflow-y: auto;
+  margin-left: 1vw;
+  z-index: -1;
+  min-height: 45vh;
+}
+.IconComment {
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.imgUsersComment {
+  border: 50%;
+  height: 50%;
+}
+.inputChange2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.usersimgName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgba(70, 62, 62, 0.253);
+  border-radius: 1rem;
+  padding: 1rem 0.5rem;
+  margin: 1rem;
+  box-shadow: 1px 1px 2px 2px rgba(70, 62, 62, 0.253);
+}
+.usersimgName > img {
+  width: 10%;
+  border-radius: 50%;
+}
+.comentario {
+  margin-left: 2rem;
+}
+.IconCommentContenedor {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 @media (max-width: 375px) {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
