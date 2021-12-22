@@ -55,33 +55,6 @@ const itinerariesControllers = {
       console.log(error);
     }
   },
-  likeItinerary: (req, res) => {
-    Itinerary.findOne({ _id: req.params.id })
-      .then((itinerary) => {
-        if (itinerary.likes.includes(req.user._id)) {
-          Itinerary.findOneAndUpdate(
-            { _id: req.params.id },
-            { $pull: { likes: req.user.id } },
-            { new: true }
-          )
-            .then((newItinerary) =>
-              res.json({ success: true, response: newItinerary.likes })
-            )
-            .catch((error) => console.log(error));
-        } else {
-          Itinerary.findOneAndUpdate(
-            { _id: req.params.id },
-            { $push: { likes: req.user.id } },
-            { new: true }
-          )
-            .then((newItinerary) =>
-              res.json({ success: true, response: newItinerary.likes })
-            )
-            .catch((error) => console.log(error));
-        }
-      })
-      .catch((error) => res.json({ success: false, response: error }));
-  },
 
   modifyComment: async (req, res) => {
     switch (req.body.type) {
@@ -133,5 +106,21 @@ const itinerariesControllers = {
         break;
     }
   },
+
+  likeItinerary:(req,res) =>{
+    Itinerary.findOne({_id: req.params.id})
+    .then((itinerary) =>{
+        if(itinerary.iLikeIt.includes(req.user._id)){
+           Itinerary.findOneAndUpdate({_id:req.params.id}, {$pull:{iLikeIt:req.user._id}},{new:true})
+           .then((newLike)=> res.json({success:true, response:newLike.iLikeIt}))
+           .catch((error) => console.log(error))
+        }else{
+            Itinerary.findOneAndUpdate({_id: req.params.id}, {$push:{iLikeIt:req.user._id}},{new:true})
+            .then((newLike) => res.json({success:true, response:newLike.iLikeIt}))
+            .catch((error) => console.log(error))
+        }
+    })
+    .catch((error) => res.json({success:false, response:error}))
+},
 };
 module.exports = itinerariesControllers;

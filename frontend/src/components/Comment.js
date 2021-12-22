@@ -12,7 +12,7 @@ const Comment = (props) => {
 
     const confirmToast = () =>{
         Swal.fire({
-            title: 'Are you sure?',
+            title: 'Are you sure you want to delete this comment ?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

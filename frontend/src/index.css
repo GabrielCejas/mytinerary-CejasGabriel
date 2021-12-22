@@ -249,13 +249,13 @@ footer h3 {
 .signInButton {
   justify-content: center;
 }
-.signh5 {
+.signh5,
+.activityTitle {
   color: #212529;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 900;
-  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+  -webkit-text-stroke: 0.6px rgb(255, 255, 255);
 }
-
 .comments {
   padding: 1rem;
   margin-top: 1rem;
@@ -297,11 +297,12 @@ footer h3 {
 .IconComment {
   font-size: 1em;
   cursor: pointer;
+  margin: 0 2px;
   border-radius: 50%;
 }
 .imgUsersComment {
   border: 50%;
-  height: 50%;
+  height: 30%;
 }
 .inputChange2 {
   display: flex;
@@ -325,11 +326,20 @@ footer h3 {
 .comentario {
   margin-left: 2rem;
 }
+.nameUsersComment {
+  margin-left: 0.5rem;
+}
 .IconCommentContenedor {
   display: flex;
   flex-direction: row-reverse;
 }
-
+.inputChange2 > p {
+  margin: 0 1rem;
+  font-weight: 600;
+}
+.pointer {
+  cursor: pointer;
+}
 @media (max-width: 375px) {
   .carousel-control-prev-icon,
   .carousel-control-next-icon {

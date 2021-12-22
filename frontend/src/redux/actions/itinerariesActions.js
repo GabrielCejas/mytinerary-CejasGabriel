@@ -9,24 +9,7 @@ const itinerariesActions = {
       dispatch({ type: "GetItineraries", payload: res.data.response });
     };
   },
-  likeItinerary: (id, token) => {
-    return async () => {
-      try {
-        let res = await axios.put(
-          `http://localhost:4000/api/itinerary/like/${id}`,
-          {},
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        return res;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  },
+
   getActivitiesItinerary: (id) => {
     return async () => {
       try {
@@ -97,6 +80,23 @@ const itinerariesActions = {
       }
     };
   },
+
+  likeItinerary: (id, token) =>{
+    return async () => {
+            try{
+                let response = await axios.put(`http://localhost:4000/api/itinerary/like/${id}`, {},{
+                headers:{
+                    Authorization: 'Bearer '+ token
+                }
+            })
+            return response
+        
+            }catch (error){
+                console.log(error)
+            }
+        
+    }
+},
 };
 
 export default itinerariesActions;

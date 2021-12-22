@@ -13,7 +13,7 @@ const Activities = (props) => {
             />
 
             <Carousel.Caption>
-              <Card.Title>{activity.title}</Card.Title>
+              <Card.Title className="activityTitle">{activity.title}</Card.Title>
             </Carousel.Caption>
           </Carousel.Item>
         );

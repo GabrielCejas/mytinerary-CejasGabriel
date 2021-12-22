@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Button, Collapse, Alert } from "react-bootstrap/";
-import { FcLike } from "react-icons/fc";
 import { connect } from "react-redux";
 import citiesActions from "../redux/actions/citiesActions";
 import itinerariesActions from "../redux/actions/itinerariesActions";
 import Activities from "./Activities";
 import Comments from "./Comments";
+import Likes from "./Likes"
 
 const Itinerary = (props) => {
   useEffect(() => {
@@ -21,7 +21,9 @@ const Itinerary = (props) => {
 
     async function getActivities() {
       try {
-        let respuesta = await props.getActivitiesItinerary(comments.comments._id);
+        let respuesta = await props.getActivitiesItinerary(
+          comments.comments._id
+        );
         setactivities(respuesta);
         setOpen(!open);
       } catch (err) {
@@ -46,9 +48,9 @@ const Itinerary = (props) => {
           <div id="example-collapse-text">
             {activities.length > 0 && <Activities activity={activities} />}
             <Comments
-                    comments={comments.comments.comments}
-                    idItinerary={comments.comments._id}
-                  />
+              comments={comments.comments.comments}
+              idItinerary={comments.comments._id}
+            />
           </div>
         </Collapse>
       </>
@@ -89,9 +91,7 @@ const Itinerary = (props) => {
                     <Card.Text>{itinerary.namePerson}</Card.Text>
                   </Card.Body>
                   <Card.Footer className="text-muted d-flex justify-content-around mb-2">
-                    <div>
-                      {itinerary.iLikeIt} <FcLike />
-                    </div>
+                    <Likes itinerary={itinerary}/>
                     <div>Price: {"💵".repeat(itinerary.price)}</div>
                     <div>Durattion: {itinerary.durattion}hs</div>
                   </Card.Footer>
@@ -107,7 +107,6 @@ const Itinerary = (props) => {
                     </div>
                   </Card.Footer>
                   <Example comments={itinerary} />
-               
                 </Card>
               </>
             );
@@ -134,11 +133,14 @@ const Itinerary = (props) => {
 const mapDispatchToProps = {
   fetchCitiesID: citiesActions.fetchCitiesID,
   getActivitiesItinerary: itinerariesActions.getActivitiesItinerary,
+  likeItinerary: itinerariesActions.likeItinerary,
 };
 
 const mapStateToProps = (state) => {
   return {
     itinerary: state.citiesReducer.itinerary,
+    token: state.userReducer.token,
+    _id: state.userReducer._id,
   };
 };
 
