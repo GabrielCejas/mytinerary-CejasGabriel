@@ -311,6 +311,8 @@ footer h3 {
   align-items: center;
 }
 .usersimgName {
+  max-width: 60vw;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -325,6 +327,7 @@ footer h3 {
   border-radius: 50%;
 }
 .comentario {
+  flex-wrap: wrap;
   margin-left: 2rem;
 }
 .nameUsersComment {

@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import Swal from 'sweetalert2'
 
 const Comment = (props) => {
-    console.log(props)
     const inputHandler = useRef() 
     const[inputChange, setInputChange] = useState(false)
-    const userValid = props.commentNew.userId._id === props._id
+    let userValid;
+    props._id && (userValid = props.commentNew.userId._id === props._id)
 
 
     const confirmToast = () =>{
@@ -57,11 +57,9 @@ const Comment = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return{
         token: state.userReducer.token,
         _id: state.userReducer._id
     }
-
 }
 export default connect(mapStateToProps)(Comment)

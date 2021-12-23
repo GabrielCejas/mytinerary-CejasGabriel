@@ -32,12 +32,10 @@ router
   .get(getUniqueItinerary)
   .delete(deleteItinerary)
   .put(changeItinerary)
-
 router
   .route("/itinerary/like/:id")
   .put(passport.authenticate('jwt', {session:false}),
-    itinerariesControllers.likeItinerary)
-  
+    itinerariesControllers.likeItinerary) 
 router
   .route("/itinerary/comments/:id")
   .put(passport.authenticate('jwt', {session:false}),
@@ -45,24 +43,20 @@ router
 
 router.route('/activities/:id')
     .get(activitiesController.getActivitiesItinerary)
-      
 router
     .route('/activities')
-    .post(activitiesController.addActivities)
-      
+    .post(activitiesController.addActivities) 
 router
     .route('/activity/:id')
     .get(activitiesController.getOneActivity)
     .delete(activitiesController.deleteActivity)
     .put(activitiesController.editActivity)
-
 router
   .route("/user/signup")
   .post(validator, userController.newUser)
 router
   .route("/user/signin")
   .post(userController.logUser)
-
 router
   .route ("/user/verifyToken")
   .get(passport.authenticate('jwt', {session:false}), userController.verifyToken)

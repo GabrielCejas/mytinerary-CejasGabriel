@@ -69,11 +69,11 @@ const Itinerary = (props) => {
               Available Itineraries for {props.itinerary[0].country}
             </h2>
           </div>
-          {props.itinerary.map((itinerary, id) => {
+          {props.itinerary.map((itinerary) => {
             return (
               <>
                 <Card
-                  key={itinerary.nameItinerary}
+                  key={itinerary._id}
                   className="text-center col-xl-6 col-sm-8 col-sm-8 col-10 mb-4"
                 >
                   <Card.Header>{props.itinerary.nameItinerary}</Card.Header>

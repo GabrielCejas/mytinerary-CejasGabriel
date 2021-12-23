@@ -7,8 +7,8 @@ import toasty from "./Toast"
 
 const Likes = (props) => {
     const {itinerary, token, likeItinerary, _id} = props
-    console.log(itinerary)
-     const [itinerariesLikes, setItinerariesLikes] = useState(itinerary.iLikeIt)
+
+    const [itinerariesLikes, setItinerariesLikes] = useState(itinerary.iLikeIt)
     const [likeIcon, setLikeIcon] = useState(true)
 
     const like= itinerariesLikes.includes(_id) ? <FcLike className="pointer"/> : <FaHeart className="pointer"/> 
@@ -22,11 +22,11 @@ const Likes = (props) => {
           setItinerariesLikes(response.data.response)
       }
       setLikeIcon(true)
-  }
+    }
     return (
         <div onClick={(likeIcon ? likeI : null )} className="likes">
         {like}<p>{itinerariesLikes.length}</p>
-            </div>
+        </div>
     )
 }
 
@@ -35,7 +35,7 @@ const mapDispatchToProps = {
     likeItinerary: itinerariesActions.likeItinerary,
   };
   
-  const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
       token: state.userReducer.token,
       _id: state.userReducer._id,

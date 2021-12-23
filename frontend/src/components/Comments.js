@@ -6,13 +6,12 @@ import Swal from 'sweetalert2'
 import toast from "./Toast"
 
 const Comments = (props) => {
-    console.log(props)
     const [renderComments, setRenderComments]= useState(false)
     const [comments, setComments] = useState(props.comments)
     const inputValue = useRef()
 
 
-      const NewComment =  () => {
+    const NewComment =  () => {
         let commentValue = inputValue.current.value
         props.addCommentItinerary(props.idItinerary, commentValue, props.token)
         .then((res)=> {
@@ -27,7 +26,7 @@ const Comments = (props) => {
         .catch((error) => console.log(error))
      }
 
-     const handlerEnter = (e) => {
+    const handlerEnter = (e) => {
         if (e.key === 'Enter') {
             NewComment()
         }
@@ -45,10 +44,10 @@ const Comments = (props) => {
         .catch((error) => console.log(error))
      }
 
-          const editComment = (idComment, comment, token) => {
-         props.editComment(idComment, comment, token)
-         .then((res) => {
-             if(res.success){
+    const editComment = (idComment, comment, token) => {
+        props.editComment(idComment, comment, token)
+        .then((res) => {
+            if(res.success){
                 comments.forEach((editComment) =>{
                     if(editComment._id === idComment){
                         editComment.comment = comment
@@ -61,7 +60,7 @@ const Comments = (props) => {
          })
          .catch((error) => console.log(error))
      }
-     const Toast = Swal.mixin({
+    const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
@@ -73,18 +72,19 @@ const Comments = (props) => {
         }
       })
 
-     const warning = () => {
+    const warning = () => {
         Toast.fire({
             icon: 'error',
             title: "You need log for comment"
           }) 
         
       }
+
     return (
         <div className="comments">
             <h3>Comments</h3>
             <div className="comments1">
-                {comments.map((comment, id)=> <Comment key={id} commentNew={comment} deleteComment={deleteComment} idItinerary={props.idItinerary} editComment={editComment} renderComments={renderComments}/>)}
+                {comments.map((comment, id)=> <Comment key={comment.comment} commentNew={comment} deleteComment={deleteComment} idItinerary={props.idItinerary} editComment={editComment} renderComments={renderComments}/>)}
             </div>
             <div className="containerComment">
                 <input ref={inputValue} type="text" onKeyPress={handlerEnter} className="coment"
