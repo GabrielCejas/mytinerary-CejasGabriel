@@ -16,5 +16,5 @@ app.use("/api", router);
 
 
 app.listen( process.env.PORT || '5000', process.env.HOST || '0.0.0.0' , () => {
-  console.log(` El server esta en el puerto ${process.env.PORT || 4000}`);
+  console.log(` El server esta en el puerto ${process.env.PORT || '5000'}`);
 });
