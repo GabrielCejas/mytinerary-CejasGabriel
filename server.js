@@ -6,6 +6,9 @@ require("./config/passport");
 const app = express();
 app.use(express.json());
 
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 require("./config/database");
 
 const router = require("./routes/routes");
