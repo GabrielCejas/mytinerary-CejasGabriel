@@ -12,7 +12,7 @@ const router = require("./routes/routes");
 
 app.use(cors());
 app.use(passport.initialize());
-app.use("/api", router);
+app.use("/", router);
 
 
 app.listen( process.env.PORT || 4000, process.env.HOST || '0.0.0.0' , () => {
