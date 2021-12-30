@@ -2,7 +2,9 @@ import axios from "axios";
 const itinerariesActions = {
   getItinerariesCity: (id) => {
     return async (dispatch, getState) => {
-      let res = await axios.get(`http://localhost:4000/api/itineraries/${id}`);
+      let res = await axios.get(
+        `https://mytinerary-cejasgabriel.herokuapp.com/api/itineraries/${id}`
+      );
       if (!res.data.success) {
         throw new Error("Database problems");
       }
@@ -13,7 +15,9 @@ const itinerariesActions = {
   getActivitiesItinerary: (id) => {
     return async () => {
       try {
-        let res = await axios.get(`http://localhost:4000/api/activities/${id}`);
+        let res = await axios.get(
+          `https://mytinerary-cejasgabriel.herokuapp.com/api/activities/${id}`
+        );
         if (res.data.success) {
           return res.data.response;
         }
@@ -26,7 +30,7 @@ const itinerariesActions = {
     return async () => {
       try {
         let response = await axios.put(
-          `http://localhost:4000/api/itinerary/comments/${id}`,
+          `https://mytinerary-cejasgabriel.herokuapp.com/api/itinerary/comments/${id}`,
           { comment, type: "addComment" },
           {
             headers: {
@@ -44,7 +48,7 @@ const itinerariesActions = {
     return async () => {
       try {
         let response = await axios.put(
-          `http://localhost:4000/api/itinerary/comments/${id}`,
+          `https://mytinerary-cejasgabriel.herokuapp.com/api/itinerary/comments/${id}`,
           { comment, type: "editComment" },
           {
             headers: {
@@ -64,8 +68,8 @@ const itinerariesActions = {
     return async () => {
       try {
         let response = await axios.put(
-          `http://localhost:4000/api/itinerary/comments/${id}`,
-          {idComment, type: "deleteComment" },
+          `https://mytinerary-cejasgabriel.herokuapp.com/api/itinerary/comments/${id}`,
+          { idComment, type: "deleteComment" },
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -81,22 +85,24 @@ const itinerariesActions = {
     };
   },
 
-  likeItinerary: (id, token) =>{
+  likeItinerary: (id, token) => {
     return async () => {
-            try{
-                let response = await axios.put(`http://localhost:4000/api/itinerary/like/${id}`, {},{
-                headers:{
-                    Authorization: 'Bearer '+ token
-                }
-            })
-            return response
-        
-            }catch (error){
-                console.log(error)
-            }
-        
-    }
-},
+      try {
+        let response = await axios.put(
+          `https://mytinerary-cejasgabriel.herokuapp.com/api/itinerary/like/${id}`,
+          {},
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  },
 };
 
 export default itinerariesActions;
