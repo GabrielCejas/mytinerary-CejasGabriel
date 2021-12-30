@@ -8,7 +8,6 @@ import userActions from "../redux/actions/userActions";
 import GoogleLogin from "react-google-login";
 
 const FormUp = ({ signUp }) => {
-
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
@@ -36,14 +35,14 @@ const FormUp = ({ signUp }) => {
   const onSubmit = async (e) => {
     let response = await signUp(form);
     if (!response.data.success) {
-      if(Array.isArray(response.data.errors)){
+      if (Array.isArray(response.data.errors)) {
         setError(
           response.data.errors.map((msj, id) => {
             return <p key={id}>{msj.message}</p>;
           })
         );
-      }else{
-        setError(<p>{response.data.error}</p>)
+      } else {
+        setError(<p>{response.data.error}</p>);
       }
     }
   };
@@ -65,10 +64,10 @@ const FormUp = ({ signUp }) => {
       photo: res.profileObj.imageUrl,
       country: "Argentina",
       google: true,
-    }
+    };
     let response = await signUp(form);
     if (!response.data.success) {
-      setError( response.data.error)
+      setError(response.data.error);
     }
   };
 
@@ -235,7 +234,7 @@ const FormUp = ({ signUp }) => {
           Or you can sign in with your Google account
         </h5>
         <GoogleLogin
-          clientId="660945448193-nfbain4p775obq5ea5p3f866pmmkc6ep.apps.googleusercontent.com"
+          clientId="660945448193-j0qqmee3riggqbpob9c9ndrbl05c0fl0.apps.googleusercontent.com"
           buttonText="Sign Up With Google"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}

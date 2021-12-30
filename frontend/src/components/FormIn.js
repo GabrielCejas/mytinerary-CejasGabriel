@@ -117,7 +117,7 @@ const FormIn = ({ logIn }) => {
           Or you can sign in with your Google account
         </h5>
         <GoogleLogin
-          clientId="660945448193-nfbain4p775obq5ea5p3f866pmmkc6ep.apps.googleusercontent.com"
+          clientId="660945448193-j0qqmee3riggqbpob9c9ndrbl05c0fl0.apps.googleusercontent.com"
           buttonText="Sign in With Google"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
